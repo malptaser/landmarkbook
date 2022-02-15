@@ -45,8 +45,18 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
    
   
         
-        
-        
+    }
+    
+    // TABLE VİEW VERİ SİLME
+    // editinstyle yazıp commit editing style fonksiyonuna ulaşırsak if editingtStyle == . ile delete veya insert özelliklerine ulaşabiliriz.
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            landmarkNames.remove(at: indexPath.row)
+            // at: indexPath.row seçili olan değeri verir
+            landmarkImages.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+        }
     }
     
     
