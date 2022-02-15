@@ -75,5 +75,15 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return landmarkNames.count
     }
+    
+    
+    // didSelect ( seçilince ) segue
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toImageVC", sender: nil)
+    }
+    
+    
+    
 }
 
