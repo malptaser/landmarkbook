@@ -48,7 +48,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         landmarkImages.append(UIImage(named: "tac.jpg")!)
         landmarkImages.append(UIImage(named: "kremlin.jpg")!)
    
-  
+        // navigation ana başlık değiştirme kodu
+        navigationItem.title = "LandMark"
         
     }
     
