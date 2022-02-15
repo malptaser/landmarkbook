@@ -14,6 +14,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     // landmarkImages adında UIImage arrayı oluşturduk
     var landmarkImages = [UIImage]()
     
+    var chosenLandmarkNames = ""
+    var chosenLandmarkImages = UIImage()
+    
+    
+    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -80,7 +85,21 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     // didSelect ( seçilince ) segue
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        chosenLandmarkNames = landmarkNames[indexPath.row]
+        chosenLandmarkImages = landmarkImages[indexPath.row]
+        
         performSegue(withIdentifier: "toImageVC", sender: nil)
+    }
+    
+    // segue olmadan önce yapılacak işlemler prepare segue fonksiyonu ile yazılır. Override edilmeli
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toImageVC" {
+            let destinationVC = segue.destination as! imageViewController
+            // bunu tanımla imageViewController'e cast etmek as!
+            destinationVC.selectedLandmarkName = chosenLandmarkNames
+            destinationVC.selectedLandmarkImage = chosenLandmarkImages
+        }
     }
     
     
